@@ -21,7 +21,8 @@ body {
   color: var(--ink);
   background: var(--paper);
   font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.6;
+  font-size: 1.06rem;
+  line-height: 1.68;
 }
 
 img {
@@ -120,23 +121,28 @@ a {
 
 .chapter-hero {
   min-height: calc(100vh - 68px);
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(260px, 42%) 1fr;
   align-items: center;
-  background: var(--ink);
+  overflow: hidden;
+  background: #151515;
   color: var(--white);
 }
 
-.hero-image {
-  min-height: calc(100vh - 68px);
+.chapter-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(rgba(35,31,32,.1), rgba(35,31,32,.35)),
-    url("images/hero-map.webp") center / cover,
-    linear-gradient(135deg, #6f6048, #1d2926);
+    linear-gradient(90deg, rgba(21,21,21,.94), rgba(21,21,21,.62)),
+    url("images/hero-map.webp") center / cover;
+  opacity: .58;
 }
 
 .hero-content {
-  max-width: 780px;
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
   padding: 6vw;
 }
 
@@ -157,7 +163,7 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-size: clamp(3.1rem, 7vw, 7rem);
 }
 
 h2 {
@@ -178,7 +184,7 @@ h2 {
 .section-banner p,
 .text-block p,
 .interactive-panel p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .source-note {
@@ -186,6 +192,28 @@ h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: .88rem;
   color: #665a50;
+}
+
+.mini-quote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.2rem;
+  border-left: 5px solid var(--gold);
+  background: rgba(201, 154, 61, .14);
+}
+
+.mini-quote p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.mini-quote span {
+  display: block;
+  margin-top: .65rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 
 .section-banner {
@@ -272,6 +300,38 @@ blockquote {
 .interactive-panel h2,
 .interactive-panel p {
   color: var(--white);
+}
+
+.interactive-copy {
+  margin-bottom: 2rem;
+}
+
+.crash-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.crash-grid article {
+  min-height: 230px;
+  padding: 1.5rem;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.crash-grid article p,
+.crash-grid article h3 {
+  color: var(--ink);
+}
+
+.crash-grid .eyebrow {
+  color: var(--red);
+}
+
+.crash-grid h3 {
+  margin: 0 0 .8rem;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.05;
 }
 
 .controls {
@@ -392,7 +452,8 @@ blockquote {
 
   .chapter-hero,
   .exhibit-row,
-  .exhibit-row.reverse {
+  .exhibit-row.reverse,
+  .crash-grid {
     grid-template-columns: 1fr;
   }
 

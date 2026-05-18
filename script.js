@@ -93,19 +93,63 @@ document.addEventListener("keydown", (event) => {
 });
 
 const exhibitSteps = [
-  "1837: The Panic of 1837 begins when cotton prices collapse. Planters default on loans, banks fail, and investors worldwide lose fortunes because speculation in slave-backed bonds was too big to fail.",
-  "2008: The subprime mortgage crisis echoes 1837. Risky securities bundled with bad loans collapse, triggering a global recession. The financial instruments had deep roots in plantation finance.",
-  "Conclusion: The myth that Wall Street's innovations were born only in the late twentieth century ignores their older origins in the slave-labor camps of the antebellum South."
+  {
+    panicTitle: "Slave-backed mortgage bonds",
+    panicText: "Caused by speculation in slave-backed mortgage bonds.",
+    crashTitle: "Subprime home mortgage bonds",
+    crashText: "Caused by speculation in subprime home mortgage bonds."
+  },
+  {
+    panicTitle: "Risky loans became securities",
+    panicText: "Banks bundled risky loans on enslaved people and sold them as securities.",
+    crashTitle: "Risky loans became CDOs",
+    crashText: "Banks bundled risky home loans and sold them as collateralized debt obligations."
+  },
+  {
+    panicTitle: "Cotton prices collapsed",
+    panicText: "Planters defaulted, banks failed, and investors lost fortunes.",
+    crashTitle: "Housing prices collapsed",
+    crashText: "Homeowners defaulted, banks failed, and global markets froze."
+  },
+  {
+    panicTitle: "Human beings as collateral",
+    panicText: "Enslaved people were collateral; when prices dropped, their market value was destroyed.",
+    crashTitle: "Homes as collateral",
+    crashText: "Homes were collateral; when prices dropped, millions lost their homes."
+  },
+  {
+    panicTitle: "Bailouts and impunity",
+    panicText: "States bailed out planters, and few planters or bankers faced consequences.",
+    crashTitle: "Bailouts and impunity",
+    crashText: "The federal government bailed out banks, and few Wall Street executives went to jail."
+  },
+  {
+    panicTitle: "A long depression",
+    panicText: "The Panic of 1837 led to a depression lasting nearly seven years.",
+    crashTitle: "The Great Recession",
+    crashText: "The 2008 crisis led to the Great Recession, with long-term effects."
+  }
 ];
 
 let currentStep = 0;
 const stepText = document.querySelector("#step-text");
+const panicTitle = document.querySelector("#panic-title");
+const panicText = document.querySelector("#panic-text");
+const crashTitle = document.querySelector("#crash-title");
+const crashText = document.querySelector("#crash-text");
 const progressBar = document.querySelector("#progress-bar");
 const nextButton = document.querySelector("#next");
 const restartButton = document.querySelector("#restart");
 
 function updateInteractiveStep() {
-  stepText.textContent = exhibitSteps[currentStep];
+  const step = exhibitSteps[currentStep];
+  if (stepText) {
+    stepText.textContent = "";
+  }
+  panicTitle.textContent = step.panicTitle;
+  panicText.textContent = step.panicText;
+  crashTitle.textContent = step.crashTitle;
+  crashText.textContent = step.crashText;
   const progress = ((currentStep + 1) / exhibitSteps.length) * 100;
   progressBar.style.width = `${progress}%`;
 }
